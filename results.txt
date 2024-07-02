@@ -1,0 +1,38 @@
+dags_random\8_3dag_r_u.txt
+   Average burning number = 1.875
+   Max burning number     = 3dags_random\50_6dag_r_c.txt
+   Average burning number = 2.1
+   Max burning number     = 3
+
+dags_random\50_6dag_r_c.txt
+   Average burning number = 2.1
+   Max burning number     = 3
+
+dags_random\50_6dag_r_c.txt
+   Average burning number = 2.1
+   Max burning number     = 3
+
+dags_random\50_6dag_r_c.txt
+   Average burning number = 2.1
+   Max burning number     = 3
+
+dags_random\50_6dag_r_c.txt
+   Average burning number = 2.04
+   Max burning number     = 3
+
+dags_random\50_6dag_r_c.txt
+   Average burning number = 2.1
+   Max burning number     = 3
+
+dags_random\50_4dag_r_c.txt
+   Average burning number = 1.92
+   Max burning number     = 3
+
+dags_random\50_10dag_r_c.txt
+   Average burning number = 2.44
+   Max burning number     = 4
+
+dags_random\50_10dag_r_c.txt
+   Average burning number = 2.22
+   Max burning number     = 3
+
