@@ -9,4 +9,4 @@ Program to used to generate different orientations of directed acyclic graphs (D
    ```
 
 ## How to Use & Other Details
-------- WIP --------
+------- Coming Soon --------
