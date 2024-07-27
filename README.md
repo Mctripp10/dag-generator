@@ -7,3 +7,6 @@ Program to used to generate different orientations of directed acyclic graphs (D
    ```
    git clone https://github.com/mctripp10/dag-generator.git
    ```
+
+## How to Use & Other Details
+------- WIP --------
