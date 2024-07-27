@@ -251,8 +251,7 @@ public class BurningGraph {
             // Print result to results file
             PrintWriter writer = null;
             FileWriter fileWriter = null;
-            String path = "C:/Users/Admin/Documents/College/Fall 2022/MTH601/";
-            String resultsFile = path + "results.txt";
+            String resultsFile = "results.txt";
 
             try {
                 fileWriter = new FileWriter(resultsFile, true);
