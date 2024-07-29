@@ -1,0 +1,12 @@
+dags\5dag.txt
+   Average burning number = 1.75
+   Max burning number     = 2
+
+dags\1dag.txt
+   Average burning number = 1.0
+   Max burning number     = 1
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 2.0
+   Max burning number     = 2
+

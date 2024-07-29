@@ -125,6 +125,34 @@ public class BurningGraph {
         }
     }
 
+    public static void findBurningNumber (BurningGraph g)
+    {
+        boolean[] burned = new boolean[numV];
+        int[] roundNum = new int[numV];
+
+        for (int i = 0; i < numV; i++) {
+            roundNum[i] = -1;
+        }
+
+        g.calcBurningNumber(0, burned, roundNum);
+    
+        if (OUTPUT_EXTRA_DATA) {
+            System.out.println("\nIndex = " + graphIndex);
+            System.out.println("Burning number = " + g.burningNumber);
+            System.out.println(g.burningSequences.size() + " burning sequence(s)");
+        }
+
+        // Print all burning sequences for the given graph
+        if (OUTPUT_BURNING_SEQUENCES) {
+            for (int i = 0; i < g.burningSequences.size(); i++) {
+                System.out.print("  ( ");
+                for (int j = 0; j < g.burningSequences.get(i).size(); j++)
+                    System.out.print(g.burningSequences.get(i).get(j) + " ");
+                System.out.print(")\n");
+            }
+        }
+    }
+
     public ArrayList<Integer> copyArray (ArrayList<Integer> a1, ArrayList<Integer> a2)
     {
         for (int i = 0; i < a1.size(); i++) 
@@ -163,7 +191,7 @@ public class BurningGraph {
         }
     }
 
-    public static void main (String [] args)
+    public static void main (String[] args)
     {
         Scanner in = new Scanner(System.in);
         FileReader fr = null;
@@ -267,34 +295,6 @@ public class BurningGraph {
             writer.println("   Max burning number     = " + maxBN);
             writer.println();
             writer.close();
-        }
-    }
-
-    public static void findBurningNumber (BurningGraph g)
-    {
-        boolean[] burned = new boolean[numV];
-        int[] roundNum = new int[numV];
-
-        for (int i = 0; i < numV; i++) {
-            roundNum[i] = -1;
-        }
-
-        g.calcBurningNumber(0, burned, roundNum);
-    
-        if (OUTPUT_EXTRA_DATA) {
-            System.out.println("\nIndex = " + graphIndex);
-            System.out.println("Burning number = " + g.burningNumber);
-            System.out.println(g.burningSequences.size() + " burning sequence(s)");
-        }
-
-        // Print all burning sequences for the given graph
-        if (OUTPUT_BURNING_SEQUENCES) {
-            for (int i = 0; i < g.burningSequences.size(); i++) {
-                System.out.print("  ( ");
-                for (int j = 0; j < g.burningSequences.get(i).size(); j++)
-                    System.out.print(g.burningSequences.get(i).get(j) + " ");
-                System.out.print(")\n");
-            }
         }
     }
 }

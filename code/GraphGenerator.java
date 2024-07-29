@@ -173,7 +173,7 @@ public class GraphGenerator {
         return a2;
     }
 
-    public static void main (String [] args)
+    public static void main (String[] args)
     {
         GraphGenerator g = new GraphGenerator();
         Scanner in = new Scanner(System.in);
@@ -193,7 +193,7 @@ public class GraphGenerator {
 
             g.generateNKDAGs(n, k);
 
-            String path = "C:/Users/Admin/Documents/College/Fall 2022/MTH601/dags_random/";
+            String path = "./dags_random/";
             String file = path + "" + n + "_" + k + "dag_r";
 
             if (CHECK_UNIQUENESS) 
@@ -216,7 +216,7 @@ public class GraphGenerator {
 
             g.generateKDAGs(k);
 
-            String path = "C:/Users/Admin/Documents/College/Fall 2022/MTH601/dags/";
+            String path = "./dags/";
             String file = path + "" + k + "dag.txt";
 
             try {
@@ -245,46 +245,3 @@ public class GraphGenerator {
         System.out.println("File written to successfully\n");
     }
 }
-
-
-
-
-
-/*
-        Scanner in = new Scanner(System.in);
-        Scanner fin = null;
-
-        System.out.print("Enter file --> ");
-        String fname = in.nextLine();
-
-        try {
-            File file = new File(fname);
-            fin = new Scanner(file);
-        } catch (FileNotFoundException e){
-            System.out.println("File not found");
-            System.exit(-1);
-        }
-
-        int numV = fin.nextInt();
-        int directed = fin.nextInt();
-
-        int src, dest;
-        String currentLine;
-        String[] v;
-        int[] intv;
-
-        while (fin.hasNextLine()) {
-            currentLine = fin.nextLine();
-            v = currentLine.split(" ");
-            intv = new int[v.length];
-
-            for (int i = 0; i < v.length; i++) {
-                intv[i] = Integer.parseInt(v[i]);
-            }
-
-            src = intv[0];
-            for (int i = 1; i < v.length; i++) {
-               // g.addEdge(src, intv[i]);
-            }
-        }
-        */
