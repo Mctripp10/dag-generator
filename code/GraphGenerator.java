@@ -1,19 +1,14 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.Random;   
 
 public class GraphGenerator {
 
     ArrayList<ArrayList<Integer>[]> dags;
     ArrayList<ArrayList<Integer>[]> duplicates;
+    public final int IS_DIRECTED = 1;
+    public boolean CHECK_UNIQUENESS = false;
+    public boolean CHECK_CONNECTEDNESS = true;
 
-    private static final int IS_DIRECTED = 1;
-    private static boolean CHECK_UNIQUENESS = false;
-    private static boolean CHECK_CONNECTEDNESS = true;
-       
     public GraphGenerator () 
     {
         dags = new ArrayList<ArrayList<Integer>[]>();
@@ -21,7 +16,7 @@ public class GraphGenerator {
     }
 
     // Generates DAGs (directed acyclic graphs) with k nodes, but each node has a sort of adjacency attribute to it
-    private void generateKDAGs (int k)
+    public void generateKDAGs (int k)
     {
         ArrayList<Integer>[] edges = new ArrayList[k];
         for (int i = 0; i < k; i++) {
@@ -171,77 +166,5 @@ public class GraphGenerator {
             for (int j = 0; j < a1[i].size(); j++)
                 a2[i].add(a1[i].get(j));
         return a2;
-    }
-
-    public static void main (String[] args)
-    {
-        GraphGenerator g = new GraphGenerator();
-        Scanner in = new Scanner(System.in);
-        PrintWriter writer = null;
-
-        System.out.println("Choose method to generate DAGs (type number):\n   1. Generate m random DAGs with k nodes\n   2. Generate all DAGs with k nodes given an adjacency property");
-        int method = in.nextInt();
-        int k = 0;
-        int n;
-
-        if (method == 1) {
-            System.out.print("Input m: ");
-            n = in.nextInt();
-
-            System.out.print("Input k: ");
-            k = in.nextInt();
-
-            g.generateNKDAGs(n, k);
-
-            String path = "./dags_random/";
-            String file = path + "" + n + "_" + k + "dag_r";
-
-            if (CHECK_UNIQUENESS) 
-                file += "_u";
-            if (CHECK_CONNECTEDNESS)
-                file += "_c";
-
-            file += ".txt";
-
-            try {
-                writer = new PrintWriter(file);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            System.out.println("\nGenerated " + n + " " + k + "-node-dags");
-        } else if (method == 2) {
-            System.out.print("Input k: ");
-            k = in.nextInt();
-
-            g.generateKDAGs(k);
-
-            String path = "./dags/";
-            String file = path + "" + k + "dag.txt";
-
-            try {
-                writer = new PrintWriter(file);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            System.out.println("\nGenerated " + g.dags.size() + " " + k + "-node-dags");
-        }
-
-        for (int i = 0; i < g.dags.size(); i++) {
-            writer.println(i+1);
-            writer.println(k + " " + IS_DIRECTED);
-            for (int j = 0; j < g.dags.get(i).length; j++) {
-                writer.print(j + " ");
-                for (int p = 0; p < g.dags.get(i)[j].size(); p++)
-                    writer.print(g.dags.get(i)[j].get(p) + " ");
-                writer.println();
-            }
-            if (i != g.dags.size()-1)
-                writer.println();
-        }
-        writer.close();
-
-        System.out.println("File written to successfully\n");
     }
 }
