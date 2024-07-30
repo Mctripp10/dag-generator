@@ -6,21 +6,21 @@ import java.io.*;
 
 public class BurningGraph {
 
+    int numV;                                            // Total number of vertices in graph
+    ArrayList<ArrayList<Integer>> burningSequences;      // Array to store each burning sequence of a graph, where each burning sequence is an int array of sources chosen
+    boolean isDirected;                                  // Boolean for if graph is directed or not
+    int burningNumber;
+    double avgBN;
+    int maxBN;
+    int graphIndex;
+
     private static ArrayList<Integer>[] vertices;        // Array of arraylists where each arraylist is that node's edge list
-    private static int numV;                             // Total number of vertices in graph
-    private static boolean isDirected;                   // Boolean for if graph is directed or not
     private boolean foundNewBN;
     private final static int INF = Integer.MAX_VALUE;   
-    private ArrayList<ArrayList<Integer>> burningSequences;     // Array to store each burning sequence of a graph, where each burning sequence is an int array of sources chosen
     private static ArrayList<Integer> sources;
 
-    private int burningNumber;
-    private static double avgBN;
-    private static int maxBN;
-    private static int graphIndex;
-
-    private static final boolean OUTPUT_EXTRA_DATA = true;
-    private static final boolean OUTPUT_BURNING_SEQUENCES = true;
+    final boolean OUTPUT_EXTRA_DATA = true;
+    final boolean OUTPUT_BURNING_SEQUENCES = true;
 
     // Constructor for a BurningGraph object
     public BurningGraph (int n) {
@@ -122,34 +122,6 @@ public class BurningGraph {
                 }
             }
             return burningNumber;
-        }
-    }
-
-    public static void findBurningNumber (BurningGraph g)
-    {
-        boolean[] burned = new boolean[numV];
-        int[] roundNum = new int[numV];
-
-        for (int i = 0; i < numV; i++) {
-            roundNum[i] = -1;
-        }
-
-        g.calcBurningNumber(0, burned, roundNum);
-    
-        if (OUTPUT_EXTRA_DATA) {
-            System.out.println("\nIndex = " + graphIndex);
-            System.out.println("Burning number = " + g.burningNumber);
-            System.out.println(g.burningSequences.size() + " burning sequence(s)");
-        }
-
-        // Print all burning sequences for the given graph
-        if (OUTPUT_BURNING_SEQUENCES) {
-            for (int i = 0; i < g.burningSequences.size(); i++) {
-                System.out.print("  ( ");
-                for (int j = 0; j < g.burningSequences.get(i).size(); j++)
-                    System.out.print(g.burningSequences.get(i).get(j) + " ");
-                System.out.print(")\n");
-            }
         }
     }
 

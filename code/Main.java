@@ -9,6 +9,34 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static void findBurningNumber (BurningGraph g)
+    {
+        boolean[] burned = new boolean[g.numV];
+        int[] roundNum = new int[g.numV];
+
+        for (int i = 0; i < g.numV; i++) {
+            roundNum[i] = -1;
+        }
+
+        g.calcBurningNumber(0, burned, roundNum);
+    
+        if (g.OUTPUT_EXTRA_DATA) {
+            System.out.println("\nIndex = " + g.graphIndex);
+            System.out.println("Burning number = " + g.burningNumber);
+            System.out.println(g.burningSequences.size() + " burning sequence(s)");
+        }
+
+        // Print all burning sequences for the given graph
+        if (g.OUTPUT_BURNING_SEQUENCES) {
+            for (int i = 0; i < g.burningSequences.size(); i++) {
+                System.out.print("  ( ");
+                for (int j = 0; j < g.burningSequences.get(i).size(); j++)
+                    System.out.print(g.burningSequences.get(i).get(j) + " ");
+                System.out.print(")\n");
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
@@ -94,7 +122,8 @@ public class Main {
 
             while (true) {
                 System.out.print("\nEnter file\n>> ");
-                String fname = in.nextLine();
+                String fname = in.next();
+                System.out.println(fname);
 
                 if (fname.toLowerCase().equals("exit"))
                     System.exit(-1);
@@ -123,8 +152,8 @@ public class Main {
                             BNSum += g.burningNumber;
                             numBNs++;
 
-                            if (g.burningNumber > maxBN)
-                                maxBN = g.burningNumber;
+                            if (g.burningNumber > g.maxBN)
+                                g.maxBN = g.burningNumber;
                     
                             // Reset variables for next graph
                             setInitial = false;
@@ -136,7 +165,7 @@ public class Main {
                             Scanner sc = new Scanner(line); 
                             if (!setIndex) {
                                 setIndex = true;
-                                graphIndex = sc.nextInt();
+                                g.graphIndex = sc.nextInt();
                             } else if (!setInitial) {
                                 setInitial = true;
 
@@ -161,13 +190,13 @@ public class Main {
                 BNSum += g.burningNumber;
                 numBNs++;
 
-                if (g.burningNumber > maxBN)
-                    maxBN = g.burningNumber;
+                if (g.burningNumber > g.maxBN)
+                    g.maxBN = g.burningNumber;
 
-                avgBN = BNSum/numBNs;
+                g.avgBN = BNSum/numBNs;
                 
-                System.out.println("\nAverage burning number = " + avgBN);
-                System.out.println("Max burning number = " + maxBN);
+                System.out.println("\nAverage burning number = " + g.avgBN);
+                System.out.println("Max burning number = " + g.maxBN);
 
                 // Print result to results file
                 PrintWriter writer = null;
@@ -184,8 +213,8 @@ public class Main {
                 }
 
                 writer.println(fname);
-                writer.println("   Average burning number = " + avgBN);
-                writer.println("   Max burning number     = " + maxBN);
+                writer.println("   Average burning number = " + g.avgBN);
+                writer.println("   Max burning number     = " + g.maxBN);
                 writer.println();
                 writer.close();
             }
