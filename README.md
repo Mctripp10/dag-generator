@@ -1,5 +1,5 @@
 # DAG Generator
-Program used to generate different orientations of directed acyclic graphs (DAGs) for the purpose of research on graph burning.
+Program used to generate different orientations of directed acyclic graphs (DAGs) for the purpose of research on graph burning, a subfield of graph theory. 
 
 ## Installation
 
