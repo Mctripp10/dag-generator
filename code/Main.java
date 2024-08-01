@@ -52,13 +52,35 @@ public class Main {
             PrintWriter writer = null;
             String path, file = "";
 
-            System.out.print("\nChoose method of generation:\n   1. Generate m random DAGs with k nodes (helpful when generating ALL DAGs with k nodes takes too long)\n   2. Generate all DAGs with k nodes given an adjacency property\n>> ");
+            System.out.print("\nChoose method of generation:\n   1. Generate all DAGs with k nodes given an adjacency property\n   2. Generate m random DAGs with k nodes (helpful when generating ALL DAGs with k nodes takes too long)\n>> ");
             int chosenMethod = in.nextInt();
             int k = 0;
             int n;
 
-            // Method to generate m random DAGs with k nodes
+            // Generate all DAGs with k nodes given an adjacency property
             if (chosenMethod == 1) {
+
+                // Collect user input
+                System.out.print("Input k\n>> ");
+                k = in.nextInt();
+
+                // Run method to generate DAGs
+                gen.generateKDAGs(k);
+
+                // Label file according to selected method and parameters
+                path = "./dags/";
+                file = path + "" + k + "dag.txt";
+
+                try {
+                    writer = new PrintWriter(file);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println("\nGenerated " + gen.dags.size() + " " + k + "-node-dags");
+            
+            // Method to generate m random DAGs with k nodes
+            } else if (chosenMethod == 2) {
 
                 // Collect user input
                 System.out.print("\nInput m\n>> ");
@@ -86,31 +108,10 @@ public class Main {
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
-
+                
                 System.out.println("\nGenerated " + n + " " + k + "-node-dags");
-            
-            // Generate all DAGs with k nodes given an adjacency property
-            } else if (chosenMethod == 2) {
-
-                // Collect user input
-                System.out.print("Input k\n>> ");
-                k = in.nextInt();
-
-                // Run method to generate DAGs
-                gen.generateKDAGs(k);
-
-                // Label file according to selected method and parameters
-                path = "./dags/";
-                file = path + "" + k + "dag.txt";
-
-                try {
-                    writer = new PrintWriter(file);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-                System.out.println("\nGenerated " + gen.dags.size() + " " + k + "-node-dags");
             }
+
 
             // Write generated graph data to file
             for (int i = 0; i < gen.dags.size(); i++) {
@@ -128,12 +129,11 @@ public class Main {
             writer.close();
 
             System.out.println("File written to successfully ---> " + file + "\n");
-        } 
 
         /*
          * Graph burning mode
          */
-        else if (chosenMode == 2) {
+        } else if (chosenMode == 2) {
             FileReader fr = null;
 
             // Loop to allow user to enter as many graph files to burn as desired
