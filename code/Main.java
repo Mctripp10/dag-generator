@@ -44,31 +44,39 @@ public class Main {
         System.out.print("Choose a mode (enter number):\n   1. Graph generation - generate various orientations of DAGs with specified properties\n   2. Graph burning - simulate graph burning and find the burning number on specified graph files\n>> ");
         int chosenMode = in.nextInt();
 
+        /*
+         * Graph generation mode
+         */
         if (chosenMode == 1) {
-            GraphGenerator g = new GraphGenerator();
+            GraphGenerator gen = new GraphGenerator();
             PrintWriter writer = null;
             String path, file = "";
 
-            System.out.print("\nChoose method of generation:\n   1. Generate m random DAGs with k nodes\n   2. Generate all DAGs with k nodes given an adjacency property\n>> ");
+            System.out.print("\nChoose method of generation:\n   1. Generate m random DAGs with k nodes (helpful when generating ALL DAGs with k nodes takes too long)\n   2. Generate all DAGs with k nodes given an adjacency property\n>> ");
             int chosenMethod = in.nextInt();
             int k = 0;
             int n;
 
+            // Method to generate m random DAGs with k nodes
             if (chosenMethod == 1) {
+
+                // Collect user input
                 System.out.print("\nInput m\n>> ");
                 n = in.nextInt();
 
                 System.out.print("\nInput k\n>> ");
                 k = in.nextInt();
 
-                g.generateNKDAGs(n, k);
+                // Run method to generate DAGs
+                gen.generateNKDAGs(n, k);
 
+                // Label file according selected method and parameters
                 path = "./dags_random/";
                 file = path + "" + n + "_" + k + "dag_r";
 
-                if (g.CHECK_UNIQUENESS) 
+                if (gen.CHECK_UNIQUENESS) 
                     file += "_u";
-                if (g.CHECK_CONNECTEDNESS)
+                if (gen.CHECK_CONNECTEDNESS)
                     file += "_c";
 
                 file += ".txt";
@@ -80,12 +88,18 @@ public class Main {
                 }
 
                 System.out.println("\nGenerated " + n + " " + k + "-node-dags");
+            
+            // Generate all DAGs with k nodes given an adjacency property
             } else if (chosenMethod == 2) {
+
+                // Collect user input
                 System.out.print("Input k\n>> ");
                 k = in.nextInt();
 
-                g.generateKDAGs(k);
+                // Run method to generate DAGs
+                gen.generateKDAGs(k);
 
+                // Label file according to selected method and parameters
                 path = "./dags/";
                 file = path + "" + k + "dag.txt";
 
@@ -95,36 +109,39 @@ public class Main {
                     e.printStackTrace();
                 }
 
-                System.out.println("\nGenerated " + g.dags.size() + " " + k + "-node-dags");
+                System.out.println("\nGenerated " + gen.dags.size() + " " + k + "-node-dags");
             }
 
-            for (int i = 0; i < g.dags.size(); i++) {
+            // Write generated graph data to file
+            for (int i = 0; i < gen.dags.size(); i++) {
                 writer.println(i+1);
-                writer.println(k + " " + g.IS_DIRECTED);
-                for (int j = 0; j < g.dags.get(i).length; j++) {
+                writer.println(k + " " + gen.IS_DIRECTED);
+                for (int j = 0; j < gen.dags.get(i).length; j++) {
                     writer.print(j + " ");
-                    for (int p = 0; p < g.dags.get(i)[j].size(); p++)
-                        writer.print(g.dags.get(i)[j].get(p) + " ");
+                    for (int p = 0; p < gen.dags.get(i)[j].size(); p++)
+                        writer.print(gen.dags.get(i)[j].get(p) + " ");
                     writer.println();
                 }
-                if (i != g.dags.size()-1)
+                if (i != gen.dags.size()-1)
                     writer.println();
             }
             writer.close();
 
             System.out.println("File written to successfully ---> " + file + "\n");
         } 
+
+        /*
+         * Graph burning mode
+         */
         else if (chosenMode == 2) {
             FileReader fr = null;
 
-            double BNSum = 0.0;
-            double numBNs = 0.0;
-
+            // Loop to allow user to enter as many graph files to burn as desired
             while (true) {
-                System.out.print("\nEnter file\n>> ");
+                System.out.print("\nEnter file (type \"exit\" to exit)\n>> ");
                 String fname = in.next();
-                System.out.println(fname);
 
+                // Type exit to exit loop & program
                 if (fname.toLowerCase().equals("exit"))
                     System.exit(-1);
 
@@ -135,7 +152,8 @@ public class Main {
                     System.out.println("File not found");
                     System.exit(-1);
                 }
-
+                
+                // Initialize variables needed for graph burning process
                 BufferedReader lineReader = new BufferedReader(fr);
                 String line;
                 boolean setInitial = false;
@@ -144,16 +162,27 @@ public class Main {
                 int directed = -1;
                 int numV = -1;
                 BurningGraph g = null;
+                double avgBN;
+                int maxBN = -1;
+                int minBN = Integer.MAX_VALUE;
+                double BNSum = 0.0;
+                double numBNs = 0.0;
                 
+                // Read in graph data from file
                 try {
                     while ((line = lineReader.readLine()) != null) {
-                        if (line.equals("")) {          // Just finished reading in graph, so find burning number of that graph
+
+                        // Just finished reading in graph, so find burning number of that graph
+                        if (line.equals("")) {
                             findBurningNumber(g);
                             BNSum += g.burningNumber;
                             numBNs++;
+                            System.out.println("incremented numBNs to " + numBNs);
 
-                            if (g.burningNumber > g.maxBN)
-                                g.maxBN = g.burningNumber;
+                            if (g.burningNumber > maxBN)
+                                maxBN = g.burningNumber;
+                            if (g.burningNumber < minBN)
+                                minBN = g.burningNumber;
                     
                             // Reset variables for next graph
                             setInitial = false;
@@ -161,20 +190,28 @@ public class Main {
                             directed = -1;
                             numV = -1;
                             g = null;
-                        } else {                                 // Otherwise, we read in the graph g
+
+                        // Otherwise, we read in the graph g
+                        } else {                                 
                             Scanner sc = new Scanner(line); 
+
+                            // If first line of the graph, store the value in graph index var
                             if (!setIndex) {
+                                g = new BurningGraph();
                                 setIndex = true;
                                 g.graphIndex = sc.nextInt();
+
+                            // If second line of graph, store number of vertices in graph and if it is directed
                             } else if (!setInitial) {
                                 setInitial = true;
 
                                 numV = sc.nextInt();
                                 directed = sc.nextInt();
 
-                                g = new BurningGraph(numV);
-                                g.numV = numV;
+                                g.initializeVertices(numV);
                                 g.isDirected = (directed == 0) ? false : true;
+
+                            // Otherwise, set first number in line to the source vertex and store the remaining numbers as it's edge list
                             } else {
                                 src = sc.nextInt();
                                 while (sc.hasNextInt()) {
@@ -189,16 +226,21 @@ public class Main {
                 findBurningNumber(g);
                 BNSum += g.burningNumber;
                 numBNs++;
+                System.out.println("incremented numBNs to " + numBNs);
 
-                if (g.burningNumber > g.maxBN)
-                    g.maxBN = g.burningNumber;
+                if (g.burningNumber > maxBN)
+                    maxBN = g.burningNumber;
+                if (g.burningNumber < minBN)
+                    minBN = g.burningNumber;
 
-                g.avgBN = BNSum/numBNs;
+                System.out.println(numBNs);
+                avgBN = BNSum/numBNs;
                 
-                System.out.println("\nAverage burning number = " + g.avgBN);
-                System.out.println("Max burning number = " + g.maxBN);
+                System.out.println("\nAverage burning number = " + avgBN);
+                System.out.println("Maximum burning number = " + maxBN);
+                System.out.println("Minimum burning number = " + minBN);
 
-                // Print result to results file
+                // Print result to results to log file
                 PrintWriter writer = null;
                 FileWriter fileWriter = null;
                 String resultsFile = "results.txt";
@@ -213,8 +255,9 @@ public class Main {
                 }
 
                 writer.println(fname);
-                writer.println("   Average burning number = " + g.avgBN);
-                writer.println("   Max burning number     = " + g.maxBN);
+                writer.println("   Average burning number = " + avgBN);
+                writer.println("   Max burning number     = " + maxBN);
+                writer.println("   Min burning number     = " + minBN);
                 writer.println();
                 writer.close();
             }

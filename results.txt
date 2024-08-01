@@ -10,3 +10,321 @@ dags_random\5_10dag_r_c.txt
    Average burning number = 2.0
    Max burning number     = 2
 
+dags\3dag.txt
+   Average burning number = 2.147483647E9
+   Max burning number     = 2147483647
+
+dags\3dag.txt
+   Average burning number = 2.147483647E9
+   Max burning number     = 2147483647
+
+dags\2dag.txt
+   Average burning number = 2.147483647E9
+   Max burning number     = 2147483647
+
+dags\7dag.txt
+   Average burning number = 2.147483647E9
+   Max burning number     = 2147483647
+
+dags\2dag.txt
+   Average burning number = 2.147483647E9
+   Max burning number     = 2147483647
+
+dags\3dag.txt
+   Average burning number = 2.147483647E9
+   Max burning number     = 2147483647
+
+dags\3dag.txt
+   Average burning number = 2.147483647E9
+   Max burning number     = 2147483647
+
+dags\3dag.txt
+   Average burning number = 2.147483647E9
+   Max burning number     = 2147483647
+
+dags\3dag.txt
+   Average burning number = 2.147483647E9
+   Max burning number     = 2147483647
+
+dags\3dag.txt
+   Average burning number = 2.147483647E9
+   Max burning number     = 2147483647
+
+dags\3dag.txt
+   Average burning number = 2.147483647E9
+   Max burning number     = 2147483647
+
+dags\3dag.txt
+   Average burning number = 2.147483647E9
+   Max burning number     = 2147483647
+
+dags\3dag.txt
+   Average burning number = 2.147483647E9
+   Max burning number     = 2147483647
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 1
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 1
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 1
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 1
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\8dag.txt
+   Average burning number = 1.8804046013486713
+   Max burning number     = 3
+
+dags_random\10_5dag_r_c.txt
+   Average burning number = 1.9
+   Max burning number     = 3
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 1.9333333333333333
+   Max burning number     = 2
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 2.0
+   Max burning number     = 2
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 2.0
+   Max burning number     = 2
+
+dags_random\10_5dag_r_c.txt
+   Average burning number = 1.95
+   Max burning number     = 3
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 1.96
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.9259259259259258
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\4dag.txt
+   Average burning number = 1.5454545454545454
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+   Min burning number     = 1
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+   Min burning number     = 1
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+   Min burning number     = 1
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+   Min burning number     = 1
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+   Min burning number     = 1
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+   Min burning number     = 1
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+   Min burning number     = 1
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+   Min burning number     = 1
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+   Min burning number     = 1
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+   Min burning number     = 1
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+   Min burning number     = 1
+
+dags\3dag.txt
+   Average burning number = 1.5
+   Max burning number     = 2
+   Min burning number     = 1
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 2.0
+   Max burning number     = 2
+   Min burning number     = 2
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 2.0
+   Max burning number     = 2
+   Min burning number     = 2
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 2.0
+   Max burning number     = 2
+   Min burning number     = 2
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 2.0
+   Max burning number     = 2
+   Min burning number     = 2
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 2.0
+   Max burning number     = 2
+   Min burning number     = 2
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 2.0
+   Max burning number     = 2
+   Min burning number     = 2
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 2.0
+   Max burning number     = 2
+   Min burning number     = 2
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 2.0
+   Max burning number     = 2
+   Min burning number     = 2
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 2.0
+   Max burning number     = 2
+   Min burning number     = 2
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 2.0
+   Max burning number     = 2
+   Min burning number     = 2
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 2.0
+   Max burning number     = 2
+   Min burning number     = 2
+
+dags_random\5_10dag_r_c.txt
+   Average burning number = 2.0
+   Max burning number     = 2
+   Min burning number     = 2
+
+dags_random\50_4dag_r_c.txt
+   Average burning number = 1.92
+   Max burning number     = 3
+   Min burning number     = 1
+
+dags_random\50_4dag_r_c.txt
+   Average burning number = 1.92
+   Max burning number     = 3
+   Min burning number     = 1
+
+dags_random\50_6dag_r_c(1).txt
+   Average burning number = 2.04
+   Max burning number     = 3
+   Min burning number     = 1
+
+dags_random\50_6dag_r_c.txt
+   Average burning number = 2.1
+   Max burning number     = 3
+   Min burning number     = 1
+
+dags_random\50_6dag_r_c.txt
+   Average burning number = 2.1
+   Max burning number     = 3
+   Min burning number     = 1
+
+dags_random\50_6dag_r_c.txt
+   Average burning number = 2.1
+   Max burning number     = 3
+   Min burning number     = 1
+

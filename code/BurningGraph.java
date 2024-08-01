@@ -10,8 +10,6 @@ public class BurningGraph {
     ArrayList<ArrayList<Integer>> burningSequences;      // Array to store each burning sequence of a graph, where each burning sequence is an int array of sources chosen
     boolean isDirected;                                  // Boolean for if graph is directed or not
     int burningNumber;
-    double avgBN;
-    int maxBN;
     int graphIndex;
 
     private static ArrayList<Integer>[] vertices;        // Array of arraylists where each arraylist is that node's edge list
@@ -22,21 +20,26 @@ public class BurningGraph {
     final boolean OUTPUT_EXTRA_DATA = true;
     final boolean OUTPUT_BURNING_SEQUENCES = true;
 
-    // Constructor for a BurningGraph object
-    public BurningGraph (int n) {
-        numV = n;
-        vertices = new ArrayList[numV];
+    // Constructor for a BurningGraph object given graph index
+    public BurningGraph () {
         isDirected = true;
         foundNewBN = false;
         burningSequences = new ArrayList<ArrayList<Integer>>();
         sources = new ArrayList<Integer>();
         burningNumber = INF;
+    }
+
+    // Initialize BurningGraph object vertex array list given n number of vertices
+    public void initializeVertices (int n) {
+        numV = n;
+        vertices = new ArrayList[numV];
         
         // Initialize each edge list to empty list
         for (int i = 0; i < numV; i++)  
             vertices[i] = new ArrayList<Integer>();
     }
 
+    // Adds an edge between vertices v and d
     public void addEdge (int v, int d)
     {
         if (vertices[v].size() == 0)
@@ -51,6 +54,7 @@ public class BurningGraph {
         }
     }
 
+    // Burns all unburned vertices that share an edge with a burned vertex and returns the resulting burned list and round num in an ArrayList
     public ArrayList<Object> spread (boolean[] burned, int[] roundNum, int currRound)
     {
         int adj;
@@ -72,6 +76,7 @@ public class BurningGraph {
         return a;
     }
 
+    // Returns true if graph is fully burned and false otherwise based on the given list of burned vertices
     public boolean isFullyBurned (boolean[] burned)
     {
         for (int i = 0; i < numV; i++)
@@ -80,7 +85,7 @@ public class BurningGraph {
         return true;
     }
 
-    // Method that calculates the burning number of a given graph by recursively checking all source combinations (potential sequences)
+    // Calculates the burning number of a given graph by recursively checking all source combinations (potential sequences)
     public int calcBurningNumber (int currRound, boolean[] burned, int[] roundNum)
     {
         // Once graph is fully burned, add current sequence to array of burning sequences
@@ -125,6 +130,7 @@ public class BurningGraph {
         }
     }
 
+    // Deep copy of two Integer array lists
     public ArrayList<Integer> copyArray (ArrayList<Integer> a1, ArrayList<Integer> a2)
     {
         for (int i = 0; i < a1.size(); i++) 
@@ -132,6 +138,7 @@ public class BurningGraph {
         return a2;
     }
 
+    // Deep copy of two boolean arrays
     public boolean[] copyArray (boolean[] a1, boolean[] a2)
     {
         for (int i = 0; i < a1.length; i++) 
@@ -139,6 +146,7 @@ public class BurningGraph {
         return a2;
     }
 
+    // Deep copy of two int arrays
     public int[] copyArray (int[] a1, int[] a2)
     {
         for (int i = 0; i < a1.length; i++) 
@@ -146,6 +154,7 @@ public class BurningGraph {
         return a2;
     }
 
+    // Prints the burning graph object to screen
     public void printGraph ()
     {
         for (int i = 0; i < numV; i++) {
@@ -156,117 +165,11 @@ public class BurningGraph {
         }
     }
 
+    // Prints given array b of booleans
     public void printArray (boolean[] b)
     {
         for (int i = 0; i < b.length; i ++) {
             System.out.print(b[i] + " ");
-        }
-    }
-
-    public static void main (String[] args)
-    {
-        Scanner in = new Scanner(System.in);
-        FileReader fr = null;
-
-        double BNSum = 0.0;
-        double numBNs = 0.0;
-
-        while (true) {
-            System.out.print("\nEnter file --> ");
-            String fname = in.nextLine();
-
-            if (fname.toLowerCase().equals("exit"))
-                System.exit(-1);
-
-            try {
-                File file = new File(fname);
-                fr = new FileReader(fname);
-            } catch (FileNotFoundException e){
-                System.out.println("File not found");
-                System.exit(-1);
-            }
-
-            BufferedReader lineReader = new BufferedReader(fr);
-            String line;
-            boolean setInitial = false;
-            boolean setIndex = false;
-            int src;
-            int directed = -1;
-            int numV = -1;
-            BurningGraph g = null;
-            
-            try {
-                while ((line = lineReader.readLine()) != null) {
-                    if (line.equals("")) {          // Just finished reading in graph, so find burning number of that graph
-                        findBurningNumber(g);
-                        BNSum += g.burningNumber;
-                        numBNs++;
-
-                        if (g.burningNumber > maxBN)
-                            maxBN = g.burningNumber;
-                
-                        // Reset variables for next graph
-                        setInitial = false;
-                        setIndex = false;
-                        directed = -1;
-                        numV = -1;
-                        g = null;
-                    } else {                                 // Otherwise, we read in the graph g
-                        Scanner sc = new Scanner(line); 
-                        if (!setIndex) {
-                            setIndex = true;
-                            graphIndex = sc.nextInt();
-                        } else if (!setInitial) {
-                            setInitial = true;
-
-                            numV = sc.nextInt();
-                            directed = sc.nextInt();
-
-                            g = new BurningGraph(numV);
-                            g.numV = numV;
-                            g.isDirected = (directed == 0) ? false : true;
-                        } else {
-                            src = sc.nextInt();
-                            while (sc.hasNextInt()) {
-                                g.addEdge(src, sc.nextInt());
-                            }
-                        }
-                    }
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            findBurningNumber(g);
-            BNSum += g.burningNumber;
-            numBNs++;
-
-            if (g.burningNumber > maxBN)
-                maxBN = g.burningNumber;
-
-            avgBN = BNSum/numBNs;
-            
-            System.out.println("\nAverage burning number = " + avgBN);
-            System.out.println("Max burning number = " + maxBN);
-
-            // Print result to results file
-            PrintWriter writer = null;
-            FileWriter fileWriter = null;
-            String resultsFile = "results.txt";
-
-            try {
-                fileWriter = new FileWriter(resultsFile, true);
-                writer = new PrintWriter(fileWriter);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            writer.println(fname);
-            writer.println("   Average burning number = " + avgBN);
-            writer.println("   Max burning number     = " + maxBN);
-            writer.println();
-            writer.close();
         }
     }
 }

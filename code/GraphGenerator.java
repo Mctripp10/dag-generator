@@ -15,7 +15,7 @@ public class GraphGenerator {
         duplicates = new ArrayList<ArrayList<Integer>[]>();
     }
 
-    // Generates DAGs (directed acyclic graphs) with k nodes, but each node has a sort of adjacency attribute to it
+    // Generates DAGs (directed acyclic graphs) with k nodes, but each node has an adjacency attribute to it
     public void generateKDAGs (int k)
     {
         ArrayList<Integer>[] edges = new ArrayList[k];
