@@ -3,6 +3,8 @@ This program serves two purposes:
 1. Generate different orientations of directed acyclic graphs (DAGs) for the purpose of research on graph burning, a subfield of graph theory.
 2. Run the graph burning process for imported graph files and determine burning number statistics about those graphs.
 
+![graph-burning-demo-people](burning-graph-demo-people.gif)
+
 ## Background
 Graph burning is a two-step, round-based process that models how quickly an influence or contagion can spread over a given graph. The goal of this process is to determine a parameter called the burning number, defined as the minimum number of rounds needed for an influence to spread over an entire graph. This parameter has recently been researched across various graph families. 
 
