@@ -1,4 +1,4 @@
-# DAG Generator
+# DAG Generator (and Graph Burner)
 This program serves two purposes:
 1. Generate different orientations of directed acyclic graphs (DAGs) for the purpose of research on graph burning, a subfield of graph theory.
 2. Run the graph burning process for imported graph files and determine burning number statistics about those graphs.
