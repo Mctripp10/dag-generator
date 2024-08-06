@@ -42,7 +42,7 @@ Both methods will generate a `.txt` file containing the graph data with the prop
 
 ## Mode 2: Graph Burning 
 
-This mode can be used to output burning number statistics for a given set of DAG orientations, including:
+This mode can be used to run a specified graph through the graph burning process and output burning number statistics for a given set of DAG orientations. These statistics include:
 - Burning number for each orientation
 - Burning sequence for each orientation
 - Average/min/max burning number across all orientations
