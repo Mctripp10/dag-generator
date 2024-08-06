@@ -30,13 +30,13 @@ In our research, we introduced the burning number in directed graphs, or digraph
 
 ## Mode 1: Graph Generation
 
-This mode allows the user to pick between two different methods of generating graphs. Note that all graphs directed and acyclic by default, although there is a setting within the program to toggle a graph to undirected. Directed acyclic graphs, or DAGs, were the specific group of graphs we wanted to target in our research. 
+This mode allows the user to pick between two different methods of generating graphs. Note that all graphs are directed and acyclic by default, although there is a setting within the program to toggle a graph as undirected. Directed acyclic graphs, or DAGs, were the specific group of graphs we wanted to target in our research. 
 
 ### Method 1: Generate All Orientations 
-More specifically, we wanted to determine how changing a digraph's orientation (edge directions) would affect the burning number. Thus, I designed this program to generate all possible unique orientations of a given k-node digraph, allowing us to make observations over the entire set of orientations for k-node digraphs. To do so, select #2 as your method of generation. This method can quickly become unreliable, however, with larger node digraphs, as generating _all_ possible orientations for large graphs becomes very computationally expensive.
+More specifically, we wanted to determine how changing a digraph's orientation (direction of edges) would affect the burning number. Thus, I designed this program to generate all possible unique orientations of a given k-node digraph, allowing us to make observations over the entire set of orientations for k-node digraphs. To do so, select #2 as your method of generation. This method can quickly become unreliable, however, with larger node digraphs, as generating _all_ possible orientations for large graphs becomes quite computationally expensive.
 
 ### Method 2: Generate Random Orientations
-To address this problem, I implemented a second method of generation that allows the user to define how many orientations they would like to generate from a given k-node DAG. This method randomly generates unique orientations, with the assumption that not all orientations for the given graph will be able to be generated if it is for a large size DAG. As such, this method can be used to generate graph data for large size digraphs without the computational cost of generating all possible orientations, only as many as the user defines.
+To address this problem, I implemented a second method of generation that allows the user to define how many orientations they would like to generate for a given k-node DAG. This method randomly generates unique orientations, with the assumption that the given graph is of large enough size that not all orientations will be generated. As such, this method can be used to generate graph data for large size digraphs without the computational cost of generating all possible orientations, only as many orientations as the user defines.
 
 Both methods will generate a `.txt` file containing the graph data with the properties the user specified.
 
